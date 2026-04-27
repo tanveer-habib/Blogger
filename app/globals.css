@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+.ownString h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 5px 0px;
+}
+
+.ownString > p {
+  margin-left: 20px;
+}
+
+.ProseMirror:focus {
+  outline: none;
+}
