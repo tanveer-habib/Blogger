@@ -1,7 +1,7 @@
 import { NextResponse as res } from "next/server";
 import connectDB from "@/lib/db.js";
 import Blog from "@/models/Blog.js";
-import { writeFile } from "fs/promises";
+import { writeFile, unlink } from "fs/promises";
 import path from "path";
 
 export const POST = async (req) => {
@@ -59,6 +59,9 @@ export const DELETE = async (req) => {
         if (!id) {
             return res.json({ success: false, message: "ID is not comming " }, { status: 400 });
         }
+
+        const blog = await Blog.findById(id);
+        await unlink(path.join(process.cwd(), "/public", blog.image));
 
         await Blog.findByIdAndDelete(id);
         return res.json({ success: true, message: "Blog Deleted" }, { status: 201 });
