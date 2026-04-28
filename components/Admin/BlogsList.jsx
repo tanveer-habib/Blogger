@@ -82,7 +82,7 @@ const Bloglist = () => {
                                             </div>
                                         </div>
                                     </td>
-                                    <td className="max-md:text-xs border dark:border-white/50 border-black/50 text-center font-semibold max-sm:hidden">{new Date(blog.date).toLocaleDateString()}</td>
+                                    <td className="max-md:text-xs border dark:border-white/50 border-black/50 text-center font-semibold max-sm:hidden">{new Date(blog.createdAt).toLocaleDateString()}</td>
                                     <td className="border dark:border-white/50 border-black/50 text-center font-semibold text-red-500 text-xl rotate-x-45 cursor-pointer" onClick={() => { setShowConfirm(true); setId(blog._id) }} >X</td>
                                 </tr>
                             })}
