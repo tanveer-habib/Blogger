@@ -37,7 +37,8 @@ export const AppContextProvider = ({ children }) => {
 
     const value = {
         isAdmin, setIsAdmin,
-        blogs
+        blogs,
+        getBlogs
     };
 
     return <AppContext.Provider value={value}>

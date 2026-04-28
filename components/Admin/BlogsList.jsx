@@ -2,13 +2,13 @@
 import Image from "next/image";
 import toast from "react-hot-toast";
 import Loader from "../Loader.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ConfirmCard from "../ConfirmCard.jsx";
 import { useAppContext } from "@/context/AppContext.js";
 import DOMPurify from "dompurify";
 
 const Bloglist = () => {
-    const { blogs } = useAppContext();
+    const { blogs, getBlogs } = useAppContext();
     const [blogsArray, setBlogsArray] = useState(blogs);
     const [loader, setLoader] = useState(false);
     const [showConfirm, setShowConfirm] = useState(false);
@@ -39,6 +39,7 @@ const Bloglist = () => {
                     setBlogsArray((prev) => (
                         prev.filter((b) => b._id != id)
                     ));
+                    getBlogs();
                     setShowConfirm(false);
                     setId(null);
                     return data.message

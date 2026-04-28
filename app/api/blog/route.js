@@ -62,6 +62,7 @@ export const GET = async (req) => {
 
 export const DELETE = async (req) => {
     try {
+        await connectCloudinary();
         await connectDB();
         const { id } = await req.json();
         if (!id) {

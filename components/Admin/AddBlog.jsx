@@ -5,10 +5,12 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import Loader from "@/components/Loader.jsx";
 import TextEditor from "./TextEditor";
+import { useAppContext } from "@/context/AppContext.js";
 
 const AddBlog = () => {
     const [form, setForm] = useState({ image: null, title: "", description: "<h2></h2>", category: "" });
     const [loader, setLoader] = useState(false);
+    const { getBlogs } = useAppContext();
 
     const handleChange = (e) => {
         setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -48,6 +50,7 @@ const AddBlog = () => {
                 success: (data) => {
                     setLoader(false);
                     setForm({ image: null, title: "", description: "<h2></h2>", category: "" });
+                    getBlogs();
                     return data.message
                 },
                 error: (error) => {
@@ -80,10 +83,6 @@ const AddBlog = () => {
                         <p>Description</p>
                         <TextEditor form={form} setForm={setForm} />
                     </div>
-                    {/* <div>
-                        <p>Description</p>
-                        <textarea placeholder="Enter Blog Description" rows="5" name="description" value={form.description} onChange={handleChange} className="w-[95%] sm:w-95 border dark:border-white/50 border-black/50 focus:outline-none px-2 py-1 rounded-sm" />
-                    </div> */}
                     <select className="focus:outline-none cursor-pointer border dark:border-white/50  border-black/50 px-3 py-1 rounded-sm my-3" onChange={handleChange} name="category" value={form.category}>
                         <option value="" className="dark:text-black">Select Category</option>
                         <option value="Lifestyle" className="dark:text-black">LifeStyle</option>
