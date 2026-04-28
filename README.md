@@ -20,7 +20,7 @@ A modern blog website built with Next.js. It features smooth animations, a clean
 
 ## 🌐 Live Demo
 
-https://blogger-sigma-dusky.vercel.app
+https://blogger-mu-seven.vercel.app
 
 ## 📦 Installation
 
